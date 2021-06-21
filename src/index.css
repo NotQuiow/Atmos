@@ -1,0 +1,112 @@
+@import url(./fonts/weather-icons.min.css);
+
+body {
+  background-image: url(../src/assets/clouds-day.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  transition: background-image 500ms ease-in-out;
+}
+
+body.clouds-day {
+  background-image: url(../src/assets/clouds-day.jpg);
+}
+body.clouds-night {
+  background-image: url(../src/assets/clouds-night.jpg);
+}
+body.rain {
+  background-image: url(../src/assets/rain.jpg);
+}
+body.clear-day {
+  background-image: url(../src/assets/clear-day.jpg);
+}
+body.clear-night {
+  background-image: url(../src/assets/clear-night.jpg);
+}
+body.atmosphere {
+  background-image: url(../src/assets/atmosphere.jpg);
+}
+body.snow {
+  background-image: url(../src/assets/snow.jpg);
+}
+body.drizzle {
+  background-image: url(../src/assets/drizzle.jpg);
+}
+body.thunderstorm {
+  background-image: url(../src/assets/thunderstorm.jpg);
+}
+
+.current-weather {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.current-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.current-icon i {
+  font-size: 6rem;
+  margin: 1rem;
+}
+.city-details {
+  margin-top: 1.2rem;
+}
+.low-high {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 0.75rem;
+}
+.low-high span {
+  display: flex;
+}
+.stats-card {
+  display: flex;
+  align-items: center;
+}
+.weather-stats {
+  min-height: 240px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.weather-stats i {
+  margin-right: 10px;
+  color: rgba(255, 255, 255, 0.7);
+  flex-basis: 20%;
+  font-size: 1rem;
+}
+.weather_stats-row1,
+.weather_stats-row2 {
+  min-width: 140px;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.daily-icons {
+  display: flex;
+  flex-basis: 55%;
+  justify-content: space-between;
+}
+.daily-icons i {
+  color: rgba(255, 255, 255, 0.7);
+}
+.daily-icons .if-rain {
+  margin-left: 8px;
+}
+.accord-max-min {
+  flex-basis: 40%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.daily-weather-stats {
+  display: flex;
+  flex-direction: column;
+}
+.daily-weather-stats .daily-temp {
+  display: flex;
+  justify-content: space-between;
+}
