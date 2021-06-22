@@ -10,7 +10,6 @@ import DailyAccord from "./Components/DailyAccord";
 import "./index.css";
 import CityDetails from "./Components/CityDetails";
 import CurrentWeathter from "./Components/CurrentWeather";
-import DailyWeather from "./Components/DailyWeather";
 import { getIfDay, setBodyClass } from "./Helpers/getTime";
 
 const fetchData = async (uri) => {
@@ -38,15 +37,13 @@ const theme = createMuiTheme({
   palette: {
     type: "dark",
     primary: {
-      light: "#ff6e40",
-      main: "#ff5722",
-      dark: "#dd2c00",
+      main: "#fff",
     },
     secondary: {
       main: "rgba(150,150,150,0.2)",
     },
     background: {
-      paper: "rgba(0,0,0,0.1)",
+      paper: "transparent",
     },
   },
   typography: {

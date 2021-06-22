@@ -1,32 +1,53 @@
 @import url(./fonts/weather-icons.min.css);
 :root {
-  --clouds-day: url(../src/assets/clouds-day.jpg);
-  --clouds-night: url(../src/assets/clouds-night.jpg);
-  --clear-day: url(../src/assets/clear-day.jpg);
-  --clear-night: url(../src/assets/clear-night.jpg);
-  --thunderstorm: url(../src/assets/thunderstorm.jpg);
-  --rain: url(../src/assets/rain.jpg);
-  --drizzle: url(../src/assets/drizzle.jpg);
-  --snow: url(../src/assets/snow.jpg);
-  --atmostphere: url(../src/assets/atmosphere.jpg);
+  --clouds-day: linear-gradient(
+    200deg,
+    #072738,
+    #144258,
+    #1e6f9a,
+    #3591bb,
+    #5e9dbb,
+    #7aa2b9
+  );
+  --clouds-night: linear-gradient(
+    200deg,
+    #01212f,
+    #02283a,
+    #083146,
+    #0b3d52,
+    #155071,
+    #367498
+  );
+  --clear-day: linear-gradient(200deg, #1f91da, #2a98e0, #4b98c5, #7fcefb);
+  --clear-night: linear-gradient(200deg, #122259, #403d80, #634d8f, #9762a2);
+  --thunderstorm: linear-gradient(
+    200deg,
+    #190418,
+    #46174e,
+    #6b377d,
+    #8e61bf,
+    #5b44a5,
+    #383882
+  );
+  --rain: linear-gradient(200deg, #0b3831, #104e49, #228a7b, #21a988);
+  --drizzle: linear-gradient(200deg, #107e90, #2fafa8, #1f8a6c, #0e7b5d);
+  --snow: linear-gradient(200deg, #777b86, #838890, #a2a9ae, #adb7bd);
+  --atmostphere: linear-gradient(200deg, #3d393f, #5f4e4d, #87685f, #b2907b);
 }
 body {
-  height: 100%;
-  background-image: var(--clear-day), var(--clouds-day), var(--clouds-night),
-    var(--clear-night), var(--drizzle), var(--rain), var(--snow),
-    var(--thunderstorm), var(--atmostphere);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  min-height: 100vh;
+  background-image: var(--clear-night);
+  background-size: 100% 145%;
   background-attachment: fixed;
-  transition: background-image 500ms ease-in-out;
+  animation: gradient 16s ease-out infinite;
 }
+
 body.clouds-day {
   background-image: var(--clouds-day);
 }
 
 body.clouds-night {
-  background-image: var(--clouds-day);
+  background-image: var(--clouds-night);
 }
 
 body.rain {
@@ -129,4 +150,15 @@ body.thunderstorm {
 .daily-weather-stats .daily-temp {
   display: flex;
   justify-content: space-between;
+}
+@keyframes gradient {
+  0% {
+    background-position: 100% 0%;
+  }
+  50% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
 }
