@@ -1,40 +1,60 @@
 @import url(./fonts/weather-icons.min.css);
-
+:root {
+  --clouds-day: url(../src/assets/clouds-day.jpg);
+  --clouds-night: url(../src/assets/clouds-night.jpg);
+  --clear-day: url(../src/assets/clear-day.jpg);
+  --clear-night: url(../src/assets/clear-night.jpg);
+  --thunderstorm: url(../src/assets/thunderstorm.jpg);
+  --rain: url(../src/assets/rain.jpg);
+  --drizzle: url(../src/assets/drizzle.jpg);
+  --snow: url(../src/assets/snow.jpg);
+  --atmostphere: url(../src/assets/atmosphere.jpg);
+}
 body {
-  background-image: url(../src/assets/clouds-day.jpg);
+  height: 100%;
+  background-image: var(--clear-day), var(--clouds-day), var(--clouds-night),
+    var(--clear-night), var(--drizzle), var(--rain), var(--snow),
+    var(--thunderstorm), var(--atmostphere);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
   transition: background-image 500ms ease-in-out;
 }
-
 body.clouds-day {
-  background-image: url(../src/assets/clouds-day.jpg);
+  background-image: var(--clouds-day);
 }
+
 body.clouds-night {
-  background-image: url(../src/assets/clouds-night.jpg);
+  background-image: var(--clouds-day);
 }
+
 body.rain {
-  background-image: url(../src/assets/rain.jpg);
+  background-image: var(--rain);
 }
+
 body.clear-day {
-  background-image: url(../src/assets/clear-day.jpg);
+  background-image: var(--clear-day);
 }
+
 body.clear-night {
-  background-image: url(../src/assets/clear-night.jpg);
+  background-image: var(--clear-night);
 }
+
 body.atmosphere {
-  background-image: url(../src/assets/atmosphere.jpg);
+  background-image: var(--atmostphere);
 }
+
 body.snow {
-  background-image: url(../src/assets/snow.jpg);
+  background-image: var(--snow);
 }
+
 body.drizzle {
-  background-image: url(../src/assets/drizzle.jpg);
+  background-image: var(--drizzle);
 }
+
 body.thunderstorm {
-  background-image: url(../src/assets/thunderstorm.jpg);
+  background-image: var(--thunderstorm);
 }
 
 .current-weather {

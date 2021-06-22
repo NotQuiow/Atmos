@@ -11,6 +11,7 @@ const Search = ({ search }) => {
   const [searchInp, setSearchInp] = useState(() => "");
   return (
     <form
+      autoComplete="off"
       onSubmit={(e) => {
         setSearchInp("");
         search(e, searchRef);
