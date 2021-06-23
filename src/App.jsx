@@ -11,6 +11,7 @@ import "./index.css";
 import CityDetails from "./Components/CityDetails";
 import CurrentWeathter from "./Components/CurrentWeather";
 import { getIfDay, setBodyClass } from "./Helpers/getTime";
+import HourlyWeather from "./Components/HourlyWeather";
 
 const fetchData = async (uri) => {
   const res = await fetch(uri);
@@ -149,6 +150,7 @@ function App() {
           />
           <CurrentWeathter />
           <Stats />
+          <HourlyWeather />
           <DailyAccord />
         </Container>
       </weatherContext.Provider>

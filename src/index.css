@@ -1,4 +1,7 @@
 @import url(./fonts/weather-icons.min.css);
+html {
+  scroll-behavior: smooth;
+}
 :root {
   --clouds-day: linear-gradient(
     200deg,
@@ -37,9 +40,9 @@
 body {
   min-height: 100vh;
   background-image: var(--clear-night);
-  background-size: 100% 145%;
+  background-size: 100% 200%;
   background-attachment: fixed;
-  animation: gradient 16s ease-out infinite;
+  animation: gradient 20s ease-out infinite;
 }
 
 body.clouds-day {
@@ -127,6 +130,10 @@ body.thunderstorm {
   flex-direction: column;
   justify-content: space-between;
 }
+.hourly-icon {
+  font-size: 1.3rem;
+  margin: 7px 0;
+}
 .daily-icons {
   display: flex;
   flex-basis: 55%;
@@ -139,9 +146,10 @@ body.thunderstorm {
   margin-left: 8px;
 }
 .accord-max-min {
-  flex-basis: 40%;
+  flex-basis: 35%;
   display: flex;
   justify-content: space-evenly;
+  align-items: baseline;
 }
 .daily-weather-stats {
   display: flex;
@@ -153,12 +161,12 @@ body.thunderstorm {
 }
 @keyframes gradient {
   0% {
-    background-position: 100% 0%;
+    background-position: 50% 0%;
   }
   50% {
     background-position: 0% 100%;
   }
   100% {
-    background-position: 100% 0%;
+    background-position: 50% 0%;
   }
 }

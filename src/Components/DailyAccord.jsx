@@ -7,8 +7,8 @@ import { makeStyles } from "@material-ui/core";
 import { weatherContext } from "../App";
 import { getDay } from "../Helpers/getTime";
 import DailyStats from "./DailyStats";
-import Divider from "@material-ui/core/Divider";
 import Skeleton from "@material-ui/lab/Skeleton";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 const useStyles = makeStyles({
   root: {
@@ -33,12 +33,11 @@ const useStyles = makeStyles({
       margin: "12px 0",
     },
   },
-
   accordDetailsRoot: {
     display: "block",
   },
-  divider: {
-    margin: "1rem 0",
+  padding: {
+    padding: "0",
   },
 });
 const options = {
@@ -52,8 +51,7 @@ const DailyAccord = () => {
     setExpanded(newExpanded ? panel : false);
   };
   return (
-    <>
-      <Divider classes={{ root: classes.divider }} />
+    <div className="daily-accord">
       {loading ? (
         <Skeleton variant="rect" height={46 * 8} animation="wave" />
       ) : (
@@ -65,10 +63,12 @@ const DailyAccord = () => {
             onChange={handleChange(`panel${i}`)}
           >
             <AccordionSummary
+              expandIcon={<ExpandMoreIcon color="disabled" fontSize="small" />}
               classes={{
                 root: classes.accordSumRoot,
                 content: classes.accordSumContent,
                 expanded: classes.expanded,
+                expandIcon: classes.padding,
               }}
             >
               <Typography variant="subtitle2">
@@ -90,10 +90,10 @@ const DailyAccord = () => {
                 </div>
                 <div className="accord-max-min">
                   <Typography variant="subtitle2">
-                    {Math.round(day.temp.max)}&deg;
+                    {Math.round(day.temp.max)}
                   </Typography>
                   <Typography variant="caption" color="textSecondary">
-                    {Math.round(day.temp.min)}&deg;
+                    {Math.round(day.temp.min)}
                   </Typography>
                 </div>
               </div>
@@ -104,7 +104,7 @@ const DailyAccord = () => {
           </Accordion>
         ))
       )}
-    </>
+    </div>
   );
 };
 

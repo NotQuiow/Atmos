@@ -32,7 +32,7 @@ const CurrentWeathter = () => {
           )}
           <div className="low-high">
             {loading ? (
-              <Skeleton animation="wave" width={30} />
+              <Skeleton animation="wave" width={25} />
             ) : (
               <Typography variant="caption">
                 <KeyboardArrowDownRoundedIcon
@@ -43,7 +43,7 @@ const CurrentWeathter = () => {
               </Typography>
             )}
             {loading ? (
-              <Skeleton animation="wave" width={30} />
+              <Skeleton animation="wave" width={25} />
             ) : (
               <Typography variant="caption">
                 <KeyboardArrowUpRoundedIcon color="disabled" fontSize="small" />
@@ -83,7 +83,7 @@ const CurrentWeathter = () => {
             ></i>
           )}
           {loading ? (
-            <Skeleton width={80} />
+            <Skeleton width={80} animation="wave" />
           ) : (
             <Typography
               color="textSecondary"
