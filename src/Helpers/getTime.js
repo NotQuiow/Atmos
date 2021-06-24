@@ -62,3 +62,21 @@ export const setBodyClass = (id, time) => {
   }
   document.body.className = className;
 };
+const getMinutes = (now, dt) => {
+  return Math.ceil((dt - now / 1000) / 60);
+};
+export const tellMeRain = (minutely) => {
+  const rainTime = minutely.filter((i) => i.precipitation !== 0);
+  console.log(rainTime);
+  if (rainTime.length == 0) return `No Precipitation within an Hour`;
+  if (rainTime.length == 61) return `Precipitation won't end within an Hour`;
+  if (minutely[0].precipitation)
+    return `Precipitation will end within ${getMinutes(
+      Date.now(),
+      rainTime[rainTime.length - 1].dt
+    )} Minutes`;
+  return `Precipitation will start in ${getMinutes(
+    Date.now(),
+    rainTime[0].dt
+  )} Minutes`;
+};

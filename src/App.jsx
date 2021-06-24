@@ -62,6 +62,7 @@ function App() {
     current: "",
     daily: "",
     hourly: "",
+    minutely: "",
     timezone: "Asia/Kolkata",
   });
   const [err, setErr] = useState(null);
@@ -138,6 +139,7 @@ function App() {
           hourly: weatherData.hourly,
           daily: weatherData.daily,
           timezone: weatherData.timezone,
+          minutely: weatherData.minutely,
           loading,
         }}
       >

@@ -62,7 +62,9 @@ const HourlyWeather = () => {
                   </Typography>
 
                   <i
-                    className={`wi wi-fw wi-owm-${i.weather[0].id} hourly-icon`}
+                    className={`wi wi-fw wi-owm${
+                      i.weather[0].icon.includes("n") ? "-night" : ""
+                    }-${i.weather[0].id} hourly-icon`}
                   ></i>
                   <Typography variant="button" color="inherit">
                     {Math.round(i.temp)}&deg;

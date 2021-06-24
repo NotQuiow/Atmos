@@ -3,15 +3,23 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Skeleton from "@material-ui/lab/Skeleton";
 import { weatherContext } from "../App";
-import { getTime } from "../Helpers/getTime";
+import { getTime, tellMeRain } from "../Helpers/getTime";
 
 const options = {
   timeStyle: "short",
 };
 const Stats = () => {
-  const { daily, current, timezone, loading } = useContext(weatherContext);
+  const { daily, current, minutely, timezone, loading } =
+    useContext(weatherContext);
   return (
     <>
+      {loading ? (
+        <Skeleton animation="wave" />
+      ) : (
+        <Typography variant="body2" align="center" color="textSecondary">
+          {tellMeRain(minutely)}
+        </Typography>
+      )}
       {loading ? (
         <Skeleton variant="rect" animation="wave" height={240} />
       ) : (
