@@ -7,11 +7,11 @@ import Typography from "@material-ui/core/Typography";
 import Search from "./Components/Search";
 import Stats from "./Components/Stats";
 import DailyAccord from "./Components/DailyAccord";
-import "./index.css";
 import CityDetails from "./Components/CityDetails";
 import CurrentWeathter from "./Components/CurrentWeather";
 import { getIfDay, setBodyClass } from "./Helpers/getTime";
 import HourlyWeather from "./Components/HourlyWeather";
+import "./index.css";
 
 const fetchData = async (uri) => {
   const res = await fetch(uri);
@@ -68,19 +68,73 @@ function App() {
   const [err, setErr] = useState(null);
   const [snackbar, setSnackbar] = useState(false);
 
+  const success = (pos) => {
+    localStorage.setItem("gps-granted", true);
+    onecall(pos.coords.latitude, pos.coords.longitude);
+    fetchData(
+      `${import.meta.env.VITE_MAPBOX_URL}${pos.coords.longitude},${
+        pos.coords.latitude
+      }.json?access_token=${import.meta.env.VITE_MAPBOX_TOKEN}${
+        import.meta.env.VITE_MAPBOX_OPTIONS
+      }`
+    )
+      .then((data) => {
+        setCityName(data.features[0].text);
+        setFullCity(data.features[0].place_name);
+        localStorage.setItem(
+          "city",
+          JSON.stringify({
+            city: data.features[0].text,
+            fullcity: data.features[0].place_name,
+          })
+        );
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
+      });
+  };
+
+  const error = useCallback(() => {
+    localStorage.removeItem("gps-granted");
+    setLoading(false);
+  }, []);
+
+  const getGeoLocation = useCallback(() => {
+    if (navigator.geolocation) {
+      setLoading(true);
+      navigator.geolocation.getCurrentPosition(success, error, {
+        enableHighAccuracy: true,
+      });
+    }
+  }, []);
+
   useEffect(() => {
     setLoading(true);
-    fetchData(import.meta.env.VITE_IP_URL)
-      .then((data) => {
-        setCityName(data.city);
-        setFullCity(`${data.region}, ${data.country_name}`);
-        onecall(data.latitude, data.longitude);
-      })
-      .catch(() => {
-        setCityName("London");
-        setFullCity("London, Greater London, England, United Kingdom");
-        onecall(51.51, -0.13);
-      });
+    if (localStorage.getItem("gps-granted")) {
+      getGeoLocation();
+    } else if (localStorage.getItem("geo")) {
+      if (localStorage.getItem("city")) {
+        const cityDetails = JSON.parse(localStorage.getItem("city"));
+        setCityName(cityDetails.city);
+        setFullCity(cityDetails.fullcity);
+      }
+      const geo = JSON.parse(localStorage.getItem("geo"));
+      const lat = geo.lat;
+      const lon = geo.lon;
+      onecall(lat, lon);
+    } else {
+      setCityName("London");
+      setFullCity("London, Greater London, England, United Kingdom");
+      onecall(51.51, -0.13);
+      localStorage.setItem(
+        "city",
+        JSON.stringify({
+          city: "London",
+          fullcity: "London, Greater London, England, United Kingdom",
+        })
+      );
+    }
   }, []);
 
   const onecall = useCallback((lat, lon) => {
@@ -92,6 +146,10 @@ function App() {
         );
         setWeatherData(data);
         setLoading(false);
+        localStorage.setItem(
+          "geo",
+          JSON.stringify({ lat: data.lat, lon: data.lon })
+        );
       })
       .catch((err) => {
         setErr(err.message);
@@ -107,7 +165,9 @@ function App() {
       fetchData(
         `${import.meta.env.VITE_MAPBOX_URL}${encodeURIComponent(
           inpRef.current.value
-        )}.json?access_token=${import.meta.env.VITE_MAPBOX_TOKEN}`
+        )}.json?access_token=${import.meta.env.VITE_MAPBOX_TOKEN}${
+          import.meta.env.VITE_MAPBOX_OPTIONS
+        }`
       )
         .then((data) => {
           inpRef.current.blur();
@@ -118,6 +178,13 @@ function App() {
             setCityName(data.features[0].text);
             setFullCity(data.features[0].place_name);
             onecall(data.features[0].center[1], data.features[0].center[0]);
+            localStorage.setItem(
+              "city",
+              JSON.stringify({
+                city: data.features[0].text,
+                fullcity: data.features[0].place_name,
+              })
+            );
           }
         })
         .catch((err) => {
@@ -127,6 +194,11 @@ function App() {
     },
     [cityName]
   );
+
+  const handleRefresh = () => {
+    setLoading(true);
+    onecall(weatherData.lat, weatherData.lon);
+  };
 
   if (err) {
     return <Typography align="center">{err}</Typography>;
@@ -145,7 +217,11 @@ function App() {
       >
         <CssBaseline />
         <Container maxWidth="sm">
-          <Search search={handleSearch} />
+          <Search
+            search={handleSearch}
+            refresh={handleRefresh}
+            geo={getGeoLocation}
+          />
 
           <CityDetails
             city={{ cityName, fullCity, timezone: weatherData.timezone }}

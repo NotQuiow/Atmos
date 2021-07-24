@@ -101,7 +101,7 @@ body.thunderstorm {
 .low-high {
   display: flex;
   gap: 5px;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1.75rem;
 }
 .low-high span {
   display: flex;

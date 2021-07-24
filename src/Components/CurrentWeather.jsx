@@ -9,6 +9,9 @@ import Skeleton from "@material-ui/lab/Skeleton";
 import { getIfDay } from "../Helpers/getTime";
 
 const useStyles = makeStyles({
+  currentWeather: {
+    marginTop: 10,
+  },
   divider: {
     margin: "1rem 0",
   },
@@ -26,7 +29,7 @@ const CurrentWeathter = () => {
               <Typography variant="h1">.</Typography>
             </Skeleton>
           ) : (
-            <Typography variant="h1">
+            <Typography variant="h1" className={classes.currentWeather}>
               {Math.round(current.temp)}&deg;
             </Typography>
           )}
