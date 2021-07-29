@@ -2,7 +2,7 @@
 
 #### Weather App developed using following:
 
-- Vite-React
-- OpenWeathermap API
-- Mapbox API
-- IP API
+- Frontend Tool - [Vite-React](https://vitejs.dev/)
+- UI Library - [Material-UI](https://material-ui.com/)
+- Weather API - [OpenWeathermap API](https://openweathermap.org/api/)
+- Geolocation API - [Mapbox API](https://docs.mapbox.com/api/overview/)
