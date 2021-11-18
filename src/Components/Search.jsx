@@ -40,6 +40,7 @@ const Search = ({ search, refresh, geo }) => {
         }}
       >
         <InputBase
+          type="search"
           className={classes.input}
           inputRef={searchRef}
           value={searchInp}

@@ -24,7 +24,7 @@ const DailyStats = ({ day }) => {
         </Typography>
         <div>
           <Typography color="textSecondary" variant="caption">
-            Day :
+            Temp :
           </Typography>
           <Typography variant="subtitle2" component="span">
             {" "}

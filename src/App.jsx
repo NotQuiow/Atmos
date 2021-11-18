@@ -62,6 +62,8 @@ function App() {
     current: "",
     daily: "",
     hourly: "",
+    lat: "",
+    lon: "",
     minutely: "",
     timezone: "Asia/Kolkata",
   });

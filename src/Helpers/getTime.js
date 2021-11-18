@@ -66,11 +66,7 @@ const getMinutes = (now, dt) => {
   return Math.ceil((dt - now / 1000) / 60);
 };
 export const tellMeRain = (minutely) => {
-  const rainTime = [];
-  for (const i in minutely) {
-    if (minutely[i].precipitation) rainTime.push(minutely[i]);
-    else break;
-  }
+  const rainTime = minutely.filter((i) => i.precipitation);
   if (rainTime.length === 0) return `No Precipitation within an Hour`;
   if (rainTime.length === 61) return `Precipitation won't end within an Hour`;
   if (minutely[0].precipitation)
