@@ -30,7 +30,7 @@ const Search = ({ search, refresh, geo }) => {
   const searchRef = useRef();
   const [searchInp, setSearchInp] = useState(() => "");
   return (
-    <>
+    <header>
       <form
         className={classes.root}
         autoComplete="off"
@@ -70,7 +70,7 @@ const Search = ({ search, refresh, geo }) => {
         </div>
       </form>
       <Divider />
-    </>
+    </header>
   );
 };
 

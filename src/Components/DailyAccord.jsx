@@ -51,7 +51,7 @@ const DailyAccord = () => {
     setExpanded(newExpanded ? panel : false);
   };
   return (
-    <div className="daily-accord">
+    <section className="daily-accord">
       {loading ? (
         <Skeleton variant="rect" height={46 * 8} animation="wave" />
       ) : (
@@ -104,7 +104,7 @@ const DailyAccord = () => {
           </Accordion>
         ))
       )}
-    </div>
+    </section>
   );
 };
 

@@ -12,6 +12,7 @@ import CurrentWeathter from "./Components/CurrentWeather";
 import { getIfDay, setBodyClass } from "./Helpers/getTime";
 import HourlyWeather from "./Components/HourlyWeather";
 import "./index.css";
+import Footer from "./Components/Footer";
 
 const fetchData = async (uri) => {
   const res = await fetch(uri);
@@ -218,13 +219,12 @@ function App() {
         }}
       >
         <CssBaseline />
-        <Container maxWidth="sm">
+        <Container maxWidth="sm" component="main">
           <Search
             search={handleSearch}
             refresh={handleRefresh}
             geo={getGeoLocation}
           />
-
           <CityDetails
             city={{ cityName, fullCity, timezone: weatherData.timezone }}
           />
@@ -232,6 +232,7 @@ function App() {
           <Stats />
           <HourlyWeather />
           <DailyAccord />
+          <Footer />
         </Container>
       </weatherContext.Provider>
       <Snackbar

@@ -22,10 +22,10 @@ const CurrentWeathter = () => {
   const classes = useStyles();
   return (
     <>
-      <div className="current-weather">
+      <section className="current-weather">
         <div>
           {loading ? (
-            <Skeleton animation="wave" height={112} width={120}>
+            <Skeleton animation="wave" height={122} width={120}>
               <Typography variant="h1">.</Typography>
             </Skeleton>
           ) : (
@@ -97,7 +97,7 @@ const CurrentWeathter = () => {
             </Typography>
           )}
         </div>
-      </div>
+      </section>
       <Divider classes={{ root: classes.divider }} />
     </>
   );

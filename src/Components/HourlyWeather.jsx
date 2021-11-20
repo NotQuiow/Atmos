@@ -33,10 +33,10 @@ const HourlyWeather = () => {
   const { hourly, loading, timezone } = useContext(weatherContext);
   const classes = useStyles();
   return (
-    <div className="hourly-display">
+    <section className="hourly-display">
       <Divider classes={{ root: classes.dividerTop }} />
       {loading ? (
-        <Skeleton variant="rect" height={80} animation="wave" />
+        <Skeleton variant="rect" height={89} animation="wave" />
       ) : (
         <Tabs
           classes={{ indicator: classes.indicator }}
@@ -77,7 +77,7 @@ const HourlyWeather = () => {
         </Tabs>
       )}
       <Divider classes={{ root: classes.dividerBottom }} />
-    </div>
+    </section>
   );
 };
 

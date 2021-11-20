@@ -17,7 +17,7 @@ const DailyStats = ({ day }) => {
   const { timezone } = useContext(weatherContext);
   const classes = useStyles();
   return (
-    <div className="daily-weather-stats">
+    <section className="daily-weather-stats">
       <div className="daily-temp">
         <Typography variant="caption" color="textSecondary">
           {getTime({ dateStyle: "medium" }, timezone, day.dt)}
@@ -132,7 +132,7 @@ const DailyStats = ({ day }) => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -12,7 +12,7 @@ const Stats = () => {
   const { daily, current, minutely, timezone, loading } =
     useContext(weatherContext);
   return (
-    <>
+    <section className="current-stats">
       {loading ? (
         <Skeleton animation="wave" />
       ) : (
@@ -136,7 +136,7 @@ const Stats = () => {
           </div>
         </Paper>
       )}
-    </>
+    </section>
   );
 };
 
