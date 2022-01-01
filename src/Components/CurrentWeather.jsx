@@ -26,10 +26,16 @@ const CurrentWeathter = () => {
         <div>
           {loading ? (
             <Skeleton animation="wave" height={122} width={120}>
-              <Typography variant="h1">.</Typography>
+              <Typography variant="h1" component="p">
+                .
+              </Typography>
             </Skeleton>
           ) : (
-            <Typography variant="h1" className={classes.currentWeather}>
+            <Typography
+              variant="h1"
+              component="p"
+              className={classes.currentWeather}
+            >
               {Math.round(current.temp)}&deg;
             </Typography>
           )}

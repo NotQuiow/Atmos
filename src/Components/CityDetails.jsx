@@ -21,7 +21,7 @@ const CityDetails = ({ city }) => {
       <Typography variant="h5" gutterBottom component="h1">
         {loading ? <Skeleton animation="wave" width={200} /> : city.cityName}
       </Typography>
-      <Typography variant="inherit">
+      <Typography variant="body2">
         {loading ? <Skeleton animation="wave" width={150} /> : city.fullCity}
       </Typography>
       <Typography variant="caption" component="p">

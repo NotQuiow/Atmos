@@ -163,7 +163,11 @@ function App() {
   const handleSearch = useCallback(
     (e, inpRef) => {
       e.preventDefault();
-      if (inpRef.current.value.toLowerCase() === cityName.toLowerCase()) return;
+      if (
+        inpRef.current.value.trim() === "" ||
+        inpRef.current.value.toLowerCase() === cityName.toLowerCase()
+      )
+        return;
       setLoading(true);
       fetchData(
         `${import.meta.env.VITE_MAPBOX_URL}${encodeURIComponent(

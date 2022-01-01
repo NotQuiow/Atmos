@@ -46,7 +46,7 @@ const DailyStats = ({ day }) => {
               <Typography variant="caption" component="p" color="textSecondary">
                 Sunrise
               </Typography>
-              <Typography variant="subtitle2">
+              <Typography variant="subtitle2" component="span">
                 {getTime(options, timezone, day.sunrise)}
               </Typography>
             </div>
@@ -57,7 +57,9 @@ const DailyStats = ({ day }) => {
               <Typography variant="caption" component="p" color="textSecondary">
                 Clouds
               </Typography>
-              <Typography variant="subtitle2">{day.clouds}%</Typography>
+              <Typography variant="subtitle2" component="span">
+                {day.clouds}%
+              </Typography>
             </div>
           </div>
           <div className="stats-card">
@@ -70,7 +72,7 @@ const DailyStats = ({ day }) => {
               <Typography variant="caption" component="p" color="textSecondary">
                 {day?.snow ? "Snow" : day?.rain ? "Rain" : "UV Index"}
               </Typography>
-              <Typography variant="subtitle2">
+              <Typography variant="subtitle2" component="span">
                 {day?.snow
                   ? `${day.snow} mm`
                   : day?.rain
@@ -85,7 +87,9 @@ const DailyStats = ({ day }) => {
               <Typography variant="caption" component="p" color="textSecondary">
                 Wind
               </Typography>
-              <Typography variant="subtitle2">{day.wind_speed} m/s</Typography>
+              <Typography variant="subtitle2" component="span">
+                {day.wind_speed} m/s
+              </Typography>
             </div>
           </div>
         </div>
@@ -96,7 +100,7 @@ const DailyStats = ({ day }) => {
               <Typography variant="caption" component="p" color="textSecondary">
                 Sunset
               </Typography>
-              <Typography variant="subtitle2">
+              <Typography variant="subtitle2" component="span">
                 {getTime(options, timezone, day.sunset)}
               </Typography>
             </div>
@@ -107,7 +111,9 @@ const DailyStats = ({ day }) => {
               <Typography variant="caption" component="p" color="textSecondary">
                 Pressure
               </Typography>
-              <Typography variant="subtitle2">{day.pressure} hPa</Typography>
+              <Typography variant="subtitle2" component="span">
+                {day.pressure} hPa
+              </Typography>
             </div>
           </div>
           <div className="stats-card">
@@ -116,7 +122,7 @@ const DailyStats = ({ day }) => {
               <Typography variant="caption" component="p" color="textSecondary">
                 Precipitation
               </Typography>
-              <Typography variant="subtitle2">
+              <Typography variant="subtitle2" component="span">
                 {parseInt(day.pop * 100)}%
               </Typography>
             </div>
@@ -127,7 +133,9 @@ const DailyStats = ({ day }) => {
               <Typography variant="caption" component="p" color="textSecondary">
                 Humidity
               </Typography>
-              <Typography variant="subtitle2">{day.humidity}%</Typography>
+              <Typography variant="subtitle2" component="span">
+                {day.humidity}%
+              </Typography>
             </div>
           </div>
         </div>

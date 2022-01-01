@@ -36,7 +36,7 @@ const Stats = () => {
                   >
                     Sunrise
                   </Typography>
-                  <Typography variant="subtitle2">
+                  <Typography variant="subtitle2" component="span">
                     {getTime(options, timezone, current.sunrise)}
                   </Typography>
                 </div>
@@ -52,14 +52,18 @@ const Stats = () => {
                   }`}
                 ></i>
                 <div>
-                  <Typography variant="caption" color="textSecondary">
+                  <Typography
+                    variant="caption"
+                    component="p"
+                    color="textSecondary"
+                  >
                     {current.snow?.["1h"]
                       ? "Snow"
                       : current.rain?.["1h"]
                       ? "Rain"
                       : "Pressure"}
                   </Typography>
-                  <Typography variant="subtitle2">
+                  <Typography variant="subtitle2" component="span">
                     {current.snow?.["1h"]
                       ? `${current.snow["1h"]} mm`
                       : current.rain?.["1h"]
@@ -71,19 +75,29 @@ const Stats = () => {
               <div className="stats-card">
                 <i className="wi wi-fw wi-cloudy "></i>
                 <div>
-                  <Typography variant="caption" color="textSecondary">
+                  <Typography
+                    variant="caption"
+                    component="p"
+                    color="textSecondary"
+                  >
                     Clouds
                   </Typography>
-                  <Typography variant="subtitle2">{current.clouds}%</Typography>
+                  <Typography variant="subtitle2" component="span">
+                    {current.clouds}%
+                  </Typography>
                 </div>
               </div>
               <div className="stats-card">
                 <i className="wi wi-fw wi-humidity"></i>
                 <div>
-                  <Typography variant="caption" color="textSecondary">
+                  <Typography
+                    variant="caption"
+                    component="p"
+                    color="textSecondary"
+                  >
                     Humidity
                   </Typography>
-                  <Typography variant="subtitle2">
+                  <Typography variant="subtitle2" component="span">
                     {current.humidity}%
                   </Typography>
                 </div>
@@ -93,10 +107,14 @@ const Stats = () => {
               <div className="stats-card">
                 <i className="wi wi-fw wi-sunset"></i>
                 <div>
-                  <Typography variant="caption" color="textSecondary">
+                  <Typography
+                    variant="caption"
+                    component="p"
+                    color="textSecondary"
+                  >
                     Sunset
                   </Typography>
-                  <Typography variant="subtitle2">
+                  <Typography variant="subtitle2" component="span">
                     {getTime(options, timezone, current.sunset)}
                   </Typography>
                 </div>
@@ -104,10 +122,14 @@ const Stats = () => {
               <div className="stats-card">
                 <i className="wi wi-fw wi-strong-wind"></i>
                 <div>
-                  <Typography variant="caption" color="textSecondary">
+                  <Typography
+                    variant="caption"
+                    component="p"
+                    color="textSecondary"
+                  >
                     Wind
                   </Typography>
-                  <Typography variant="subtitle2">
+                  <Typography variant="subtitle2" component="span">
                     {current.wind_speed} m/s
                   </Typography>
                 </div>
@@ -115,10 +137,14 @@ const Stats = () => {
               <div className="stats-card">
                 <i className="wi wi-fw wi-raindrops"></i>
                 <div>
-                  <Typography variant="caption" color="textSecondary">
+                  <Typography
+                    variant="caption"
+                    component="p"
+                    color="textSecondary"
+                  >
                     Precipitation
                   </Typography>
-                  <Typography variant="subtitle2">
+                  <Typography variant="subtitle2" component="span">
                     {parseInt(daily[0].pop * 100)}%
                   </Typography>
                 </div>
@@ -126,10 +152,16 @@ const Stats = () => {
               <div className="stats-card">
                 <i className="wi wi-fw wi-umbrella"></i>
                 <div>
-                  <Typography variant="caption" color="textSecondary">
+                  <Typography
+                    variant="caption"
+                    component="p"
+                    color="textSecondary"
+                  >
                     UV Index
                   </Typography>
-                  <Typography variant="subtitle2">{current.uvi}</Typography>
+                  <Typography variant="subtitle2" component="span">
+                    {current.uvi}
+                  </Typography>
                 </div>
               </div>
             </div>

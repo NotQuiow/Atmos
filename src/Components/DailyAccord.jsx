@@ -71,7 +71,7 @@ const DailyAccord = () => {
                 expandIcon: classes.padding,
               }}
             >
-              <Typography variant="subtitle2">
+              <Typography variant="subtitle2" component="p">
                 {getDay(options, timezone, day.dt)}
               </Typography>
 
@@ -89,7 +89,7 @@ const DailyAccord = () => {
                   )}
                 </div>
                 <div className="accord-max-min">
-                  <Typography variant="subtitle2">
+                  <Typography variant="subtitle2" component="p">
                     {Math.round(day.temp.max)}
                   </Typography>
                   <Typography variant="caption" color="textSecondary">

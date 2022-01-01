@@ -30,47 +30,57 @@ const Search = ({ search, refresh, geo }) => {
   const searchRef = useRef();
   const [searchInp, setSearchInp] = useState(() => "");
   return (
-    <header>
-      <form
-        className={classes.root}
-        autoComplete="off"
-        onSubmit={(e) => {
-          setSearchInp("");
-          search(e, searchRef);
-        }}
-      >
-        <InputBase
-          type="search"
-          className={classes.input}
-          inputRef={searchRef}
-          value={searchInp}
-          onChange={(e) => setSearchInp(e.target.value)}
-          placeholder="Search Your City"
-          inputProps={{ "aria-label": "search city" }}
-          startAdornment={
-            <InputAdornment>
-              <IconButton
-                disabled
-                className={classes.searchIcon}
-                aria-label="Search Weather"
-              >
-                <SearchRoundedIcon />
-              </IconButton>
-            </InputAdornment>
-          }
-        />
-        <div className={classes.root}>
-          <IconButton aria-label="Refresh Search" onClick={refresh}>
-            <AutorenewRoundedIcon />
-          </IconButton>
-          <Divider className={classes.dividerVerti} orientation="vertical" />
-          <IconButton onClick={geo} aria-label="GPS Search">
-            <GpsFixedRoundedIcon />
-          </IconButton>
-        </div>
-      </form>
+    <>
+      <header>
+        <form
+          className={classes.root}
+          autoComplete="off"
+          onSubmit={(e) => {
+            setSearchInp("");
+            search(e, searchRef);
+          }}
+        >
+          <InputBase
+            type="search"
+            className={classes.input}
+            inputRef={searchRef}
+            value={searchInp}
+            onChange={(e) => setSearchInp(e.target.value)}
+            placeholder="Search Your City"
+            inputProps={{ "aria-label": "search city" }}
+            startAdornment={
+              <InputAdornment>
+                <IconButton
+                  disabled
+                  className={classes.searchIcon}
+                  aria-label="Search Weather"
+                >
+                  <SearchRoundedIcon />
+                </IconButton>
+              </InputAdornment>
+            }
+          />
+          <div className={classes.root}>
+            <IconButton
+              aria-label="Refresh Search"
+              title="Refresh"
+              onClick={refresh}
+            >
+              <AutorenewRoundedIcon />
+            </IconButton>
+            <Divider className={classes.dividerVerti} orientation="vertical" />
+            <IconButton
+              onClick={geo}
+              aria-label="GPS Search"
+              title="GPS Search"
+            >
+              <GpsFixedRoundedIcon />
+            </IconButton>
+          </div>
+        </form>
+      </header>
       <Divider />
-    </header>
+    </>
   );
 };
 
