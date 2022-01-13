@@ -153,8 +153,10 @@ function App() {
           "geo",
           JSON.stringify({ lat: data.lat, lon: data.lon })
         );
+        setErr(null);
       })
       .catch((err) => {
+        setLoading(false);
         setErr(err.message);
         console.log(err);
       });
@@ -203,13 +205,11 @@ function App() {
   );
 
   const handleRefresh = () => {
+    console.log(loading);
     setLoading(true);
     onecall(weatherData.lat, weatherData.lon);
   };
 
-  if (err) {
-    return <Typography align="center">{err}</Typography>;
-  }
   return (
     <ThemeProvider theme={theme}>
       <weatherContext.Provider
@@ -229,14 +229,22 @@ function App() {
             refresh={handleRefresh}
             geo={getGeoLocation}
           />
-          <CityDetails
-            city={{ cityName, fullCity, timezone: weatherData.timezone }}
-          />
-          <CurrentWeathter />
-          <Stats />
-          <HourlyWeather />
-          <DailyAccord />
-          <Footer />
+          {err ? (
+            <Typography align="center" style={{ marginTop: "1rem" }}>
+              {err}
+            </Typography>
+          ) : (
+            <>
+              <CityDetails
+                city={{ cityName, fullCity, timezone: weatherData.timezone }}
+              />
+              <CurrentWeathter />
+              <Stats />
+              <HourlyWeather />
+              <DailyAccord />
+              <Footer />
+            </>
+          )}
         </Container>
       </weatherContext.Provider>
       <Snackbar
