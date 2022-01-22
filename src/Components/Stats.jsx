@@ -17,7 +17,7 @@ const Stats = () => {
         <Skeleton animation="wave" />
       ) : (
         <Typography variant="body2" align="center" color="textSecondary">
-          {tellMeRain(minutely)}
+          {minutely ? tellMeRain(minutely) : `No Precipitation Data`}
         </Typography>
       )}
       {loading ? (
